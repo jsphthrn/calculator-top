@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 * {
     font-family: 'Roboto', 'Open Sans', sans-serif;
@@ -88,10 +89,21 @@ button {
     font-size: 16px;
     border: none;
     padding: 12px;
-    margin: 12px 36px;
+    margin: 12px 18px;
     width: 120px;
     background-color: #64D1C0;
     font-weight: 900;
+}
+
+.number-button {
+    background-color: #ffffff;
+    width: 56px;
+}
+
+.blue-button {
+    background-color: blue;
+    color: #ffffff;
+    width: 56px;
 }
 
 .log {
@@ -106,6 +118,29 @@ p {
     margin: 12px;
     font-size: 14px;
 }
+
+.calc-outer {
+    background-color:#000000;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+#calc-screen {
+    background-color: #b6ffbb;
+    border: none;
+    width: 550px;
+    height: 96px;
+    font-size: 48px;
+    font-family: 'VT323', 'Roboto Mono', monospace;
+}
+
+.basic-functions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 
 .footer {
     background-color: #333333;
