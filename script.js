@@ -17,12 +17,22 @@ function div (a, b) {
 }
 
 function operate (op1, op, op2) {
-
+    switch (op) {
+        case '+':
+            return (op1 * 1) + (op2 * 1);
+        case '-':
+            return (op1 * 1) - (op2 * 1);
+        case '*':
+            return (op1 * 1) * (op2 * 1);
+        case '/':
+            return (op1 * 1) / (op2 * 1);
+    }
 }
 
 let operandOne;
 let operator;   
 let operandTwo;
+let clearCalc = false;
 let ans;
 
 const screen = document.getElementById("calc-screen");
@@ -36,7 +46,12 @@ const numberKeys = [];
 for(let i = 0; i <= 9; i++) {
     numberKeys[i] = document.getElementById(`${i}`);
     numberKeys[i].addEventListener("click", () => {
-        screen.value += `${i}`;
+        if (clearCalc) {
+            screen.value = `${i}`;
+            clearCalc = false;
+        } else {
+            screen.value += `${i}`;
+        }
     });
 }
 
@@ -47,25 +62,47 @@ backspace.addEventListener("click", () => {
 
 const clear = document.getElementById("clear");
 clear.addEventListener("click", () => {
-    screen.value = "";
+    screen.value = '';
+    operandOne = undefined;
+    operandTwo = undefined;
+    operator = undefined;
 });
 
 const multiply = document.getElementById("mul");
 multiply.addEventListener("click", () => {
-    screen.value += "*";
+    (operandOne) ? operandTwo = screen.value : operandOne = screen.value;
+    operator = "*";
+    clearCalc = true;
 });
 
 const divide = document.getElementById("div");
 divide.addEventListener("click", () => {
-    screen.value += "/";
+    (operandOne) ? operandTwo = screen.value : operandOne = screen.value;
+    operator = "/";
+    clearCalc = true;
 });
 
 const sum = document.getElementById("add");
 sum.addEventListener("click", () => {
-    screen.value += "+";
+    (operandOne) ? operandTwo = screen.value : operandOne = screen.value;
+    operator = "+";
+    clearCalc = true;
 });
 
 const substract = document.getElementById("sub");
 substract.addEventListener("click", () => {
-    screen.value += "-";
+    (operandOne) ? operandTwo = screen.value : operandOne = screen.value;
+    operator = "-";
+    clearCalc = true;
+});
+
+const equal = document.getElementById("equals");
+equal.addEventListener("click", () => {
+    operandTwo = screen.value;
+    screen.value = operate(operandOne, operator, operandTwo);
+    ans = screen.value;
+    operandOne = ans;
+    operandTwo = undefined;
+    operator = undefined;
+    clearCalc = true;
 });
