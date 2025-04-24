@@ -114,3 +114,10 @@ equal.addEventListener("click", () => {
         postOperate();
     }   
 });
+
+const dot = document.getElementById("dot");
+dot.addEventListener("click", () => {
+    if (!(screen.value.split("").includes("."))) {
+        (screen.value === '' || screen.value === undefined || clearCalc) ? screen.value = `0.` : screen.value += ".";
+    }
+});
