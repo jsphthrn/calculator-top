@@ -29,6 +29,15 @@ function operate (op1, op, op2) {
     }
 }
 
+function postOperate () {
+    ans = screen.value;
+    operandOne = ans;
+    operandTwo = undefined;
+    operator = undefined;
+    clearCalc = true;
+}
+
+
 let operandOne;
 let operator;   
 let operandTwo;
@@ -70,39 +79,38 @@ clear.addEventListener("click", () => {
 
 const multiply = document.getElementById("mul");
 multiply.addEventListener("click", () => {
-    (operandOne) ? operandTwo = screen.value : operandOne = screen.value;
+    operandOne = screen.value;
     operator = "*";
     clearCalc = true;
 });
 
 const divide = document.getElementById("div");
 divide.addEventListener("click", () => {
-    (operandOne) ? operandTwo = screen.value : operandOne = screen.value;
+    operandOne = screen.value;
     operator = "/";
     clearCalc = true;
 });
 
 const sum = document.getElementById("add");
 sum.addEventListener("click", () => {
-    (operandOne) ? operandTwo = screen.value : operandOne = screen.value;
+    operandOne = screen.value;
     operator = "+";
     clearCalc = true;
 });
 
 const substract = document.getElementById("sub");
 substract.addEventListener("click", () => {
-    (operandOne) ? operandTwo = screen.value : operandOne = screen.value;
+    operandOne = screen.value;
     operator = "-";
     clearCalc = true;
+
 });
 
 const equal = document.getElementById("equals");
 equal.addEventListener("click", () => {
-    operandTwo = screen.value;
-    screen.value = operate(operandOne, operator, operandTwo);
-    ans = screen.value;
-    operandOne = ans;
-    operandTwo = undefined;
-    operator = undefined;
-    clearCalc = true;
+    if (operandOne && operator) {
+        operandTwo = screen.value;
+        screen.value = operate(operandOne, operator, operandTwo);
+        postOperate();
+    }    
 });
