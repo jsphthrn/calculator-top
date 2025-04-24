@@ -25,7 +25,7 @@ function operate (op1, op, op2) {
         case '*':
             return (op1 * 1) * (op2 * 1);
         case '/':
-            return (op1 * 1) / (op2 * 1);
+            return (op2 === "0") ? "Math Error" : (op1 * 1) / (op2 * 1);
     }
 }
 
@@ -81,7 +81,7 @@ const multiply = document.getElementById("mul");
 multiply.addEventListener("click", () => {
     operandOne = screen.value;
     operator = "*";
-    clearCalc = true;
+    clearCalc = true;    
 });
 
 const divide = document.getElementById("div");
@@ -108,9 +108,9 @@ substract.addEventListener("click", () => {
 
 const equal = document.getElementById("equals");
 equal.addEventListener("click", () => {
-    if (operandOne && operator) {
+    if (operandOne && operator && !ans) {
         operandTwo = screen.value;
         screen.value = operate(operandOne, operator, operandTwo);
         postOperate();
-    }    
+    }   
 });
